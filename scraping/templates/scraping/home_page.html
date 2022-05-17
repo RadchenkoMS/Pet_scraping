@@ -1,0 +1,43 @@
+{%extends "scraping/base.html" %}
+
+
+{%block content%}
+
+<div class="row">
+    <div class="col-md-2">
+      <form >
+        <div class="mb-3">
+        {{form.as_p}}
+        </div>
+     <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+</div>
+
+
+    {%for obj in object_list%}
+        <div class="card my-4">
+      <div class="card-header">
+        <a href="{{obj.url}}">{{obj.title}}</a>
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p>{{obj.description}}</p>
+            <p>{{obj.credit}}</p>
+          <footer class="blockquote-footer">{{obj.timestamp}} <cite title="Source Title"></cite></footer>
+        </blockquote>
+      </div>
+    </div>
+    {% empty %}
+        <div class="card">
+      <div class="card-header">
+        Oops
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Даных по запросу не найдено</h5>
+        <p class="card-text">Попробуйте связятся с кем-то хз что делать если честно. Иди в админке добвавь хули</p>
+        <a href="http://127.0.0.1:8000/home/" class="btn btn-primary">Додомцю</a>
+      </div>
+    </div>
+    {% endfor %}
+{%endblock%}

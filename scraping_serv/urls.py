@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from scraping_serv.views import home
+from scraping.views import home_page
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home)
+    path('home/', home_page)
+
 ]
